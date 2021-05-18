@@ -1,8 +1,21 @@
 <template>
 <div id ="board">
-    <div id="game-view">
+     <!-- <div id="game-space">
+        </div> -->
+
+        <div class = "animate__animated animate__fadeInLeft">
+        <img id="playerXPic" src="@/assets/user.png"/>
+        <p id="playerX">{{partita.userx}} X</p>
+        </div>
+        
+        <div class = "animate__animated animate__fadeInRight">
+        <img id="playerOPic" src="@/assets/user.png"/>
+        <p id="playerO">{{partita.usero}} O</p>
+        </div>
+
+    <div id="game-view" >
         <div id="game-view-info">   
-                {{partita.userx}} VS {{partita.usero}}
+                tocca a 
             </div>
             
           <div class = "game-view-squares">
@@ -45,6 +58,7 @@ export default {
             bodyModal: String,
             intervalId: undefined,
             arrMossa: undefined,
+           
          
         }
     },
@@ -77,10 +91,12 @@ export default {
                 this.arrMossa.forEach((element,index) => {
                     if(this.arrMossa[index]!= 0 && element%2 == 0 ){
                         this.cells[index].symbol = "O";
+                      
                        
                     }
                     else if(this.arrMossa[index] != 0 && element%2 != 0  ){
                         this.cells[index].symbol = "X";
+                        
                         
                     }
                     
@@ -235,4 +251,52 @@ export default {
     box-sizing: border-box;
 
 }
+
+/* #game-space{
+    position: absolute;
+    right: 400px;
+    left: 400px;
+    top: 100px;
+    width: 1400px;
+    height: 800px;
+    margin: 0 auto;
+    background-color: rgb(236, 171, 171);
+    opacity: 0.1;
+} */
+
+#playerXPic{
+    position: absolute;
+    left: 150px;
+    top: 160px;
+    width: 100px;
+}
+
+#playerOPic{
+    position: absolute;
+    right: 150px;
+    top: 160px;
+    width: 100px;
+}
+
+
+#playerX{
+    position: absolute;
+    left: 290px;
+    top: 200px;
+    width: 100px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#playerO{
+    position: absolute;
+    right: 430px;
+    top: 200px;
+    width: 100px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 50px;
+    font-weight: bold;
+}
+
 </style>

@@ -15,7 +15,7 @@
         <div v-if="pswVisible" class ="textb" >
             <!-- <input type="password" placeholder="Password" v-model="password" class="form-control" id="inputPassword" > -->
             <input type="password" v-model="password"  id = "password" required>
-            <div class="placeholder">Passworxxxxd</div>
+            <div class="placeholder">Password</div>
             <div @click = "pswVisible = false" class="show-password fas fa-eye-slash"></div>      
         </div>
         
@@ -29,11 +29,10 @@
 
         <div class="checkbox">
           <!-- <font-awesome-icon icon="fa-check" /> -->
-         
-             <input type="checkbox"> 
-              <font-awesome-icon :icon="['fas', 'check']" class="fas fa-check"/>
-        
-            <!-- <div class="fas fa-check"></div> -->
+<!--           <font-awesome-icon :icon="['fas', 'check']" />
+ -->          
+            <input type="checkbox">
+            <div class="fas fa-check"></div>
             Remember me
         </div> 
          <div v-if="spinner" >

@@ -47,7 +47,7 @@
                 <li><router-link to="/">Home</router-link></li>
                 <li id="login">
                     <router-link to="/login">
-                        <button type="button" class="btn btn-outline-danger">Login</button>
+                        <b-button variant="outline-danger">Login</b-button>
                     </router-link>
                 </li> 
             </template>
