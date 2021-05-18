@@ -15,7 +15,7 @@
         <div v-if="pswVisible" class ="textb" >
             <!-- <input type="password" placeholder="Password" v-model="password" class="form-control" id="inputPassword" > -->
             <input type="password" v-model="password"  id = "password" required>
-            <div class="placeholder">Password</div>
+            <div class="placeholder">Passworxxxxd</div>
             <div @click = "pswVisible = false" class="show-password fas fa-eye-slash"></div>      
         </div>
         
