@@ -15,14 +15,14 @@
 
     <div id="game-view" >
 
-        <div id="game-view-info" v-if="next" >   
+        <div id="game-view-info" >   
                 mossa a {{next}}!
         </div>
 
-
+<!-- 
         <div id="game-view-info" v-else>   
                 mossa a {{partita.userx}}!
-        </div>
+        </div> -->
 
             
           <div class = "game-view-squares">
@@ -95,20 +95,24 @@ export default {
                
                 this.arrMossa = game.mossa.split('').map(x => parseInt(x));
                 console.log("arrMossa: ", this.arrMossa);
+                //modifico stringa next che da l'informazione su quale gicatore deve fare la prossima mossa 
+                let max = Math.max(...this.arrMossa);
+                if(max%2 == 0) this.next = this.partita.userx;
+                else this.next = this.partita.usero;
+                
                 this.arrMossa.forEach((element,index) => {
                     if(this.arrMossa[index]!= 0 && element%2 == 0 ){
                         this.cells[index].symbol = "O";
-                        this.next = this.partita.userx;
+                       
                     }
                     else if(this.arrMossa[index] != 0 && element%2 != 0  ){
                         this.cells[index].symbol = "X";
-                        this.next = this.partita.usero;
                      }
                     
                 });
+
                 if(game.risultato != 0){
                     eventBus.$emit('partitaFinita');
-                    this.next = undefined;
                     switch(game.risultato){
                         case 1:
                             this.titleModal ='Partita Terminata'; 
@@ -153,12 +157,7 @@ export default {
     },
     methods:{
         handleClick(cella){
-            if(Math.max(...this.arrMossa)%2 == 0){
-                this.currSymbol = "O"
-            }
-            else{
-                this.currSymbol = "X"
-            }
+           
             if (!this.checkTurn()) return; 
             axios({
                 method: 'put',
@@ -267,13 +266,13 @@ export default {
 
 /* #game-space{
     position: absolute;
-    right: 400px;
+    right: 650px;
     left: 400px;
     top: 100px;
-    width: 1400px;
+    width: 1450px;
     height: 800px;
     margin: 0 auto;
-    background-color: rgb(236, 171, 171);
+    background-color: rgb(119, 64, 64);
     opacity: 0.1;
 } */
 
@@ -286,7 +285,7 @@ export default {
 
 #playerOPic{
     position: absolute;
-    right: 150px;
+    right: 310px;
     top: 160px;
     width: 100px;
 }
