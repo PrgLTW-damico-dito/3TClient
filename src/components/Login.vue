@@ -16,7 +16,9 @@
             <!-- <input type="password" placeholder="Password" v-model="password" class="form-control" id="inputPassword" > -->
             <input type="password" v-model="password"  id = "password" required>
             <div class="placeholder">Password</div>
-            <div @click = "pswVisible = false" class="show-password fas fa-eye-slash"></div>      
+            <div @click = "pswVisible = false">
+              <font-awesome-icon :icon="['fas', 'eye-slash']" class="show-password"/>  
+            </div>      
         </div>
         
 
@@ -24,7 +26,9 @@
             <!-- <input type="password" placeholder="Password" v-model="password" class="form-control" id="inputPassword" > -->
             <input type="text" v-model="password"  id = "password" required>
             <div class="placeholder">Password</div>
-            <div @click = "pswVisible = true" class="show-password fas fa-eye"></div>      
+            <div @click = "pswVisible = true" >
+              <font-awesome-icon :icon="['fas', 'eye']" class="show-password "/>    
+            </div>      
         </div>
 
         <div class="checkbox">
@@ -32,7 +36,8 @@
 <!--           <font-awesome-icon :icon="['fas', 'check']" />
  -->          
             <input type="checkbox">
-            <div class="fas fa-check"></div>
+            <font-awesome-icon :icon="['fas', 'check']" class="fas fa-check"/>
+            <!-- <div class="fas fa-check"></div> -->
             Remember me
         </div> 
          <div v-if="spinner" >
@@ -211,6 +216,7 @@ body{
 .show-password{
   position: absolute;
   right: 20px;
+  top: 20px;
   line-height: 70px;
   color: #9d9d9d;
   font-size: 22px;

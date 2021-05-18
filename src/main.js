@@ -6,8 +6,13 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import {faEye } from '@fortawesome/free-solid-svg-icons'
+import {faCheck } from '@fortawesome/free-solid-svg-icons'
 library.add(faArrowRight)
 library.add(faEyeSlash)
+library.add(faEye)
+library.add(faCheck)
+
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 

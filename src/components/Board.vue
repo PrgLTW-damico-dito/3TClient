@@ -5,7 +5,7 @@
 
         <div class = "animate__animated animate__fadeInLeft">
         <img id="playerXPic" src="@/assets/user.png"/>
-        <p id="playerX">{{partita.userx}} X</p>
+        <p id="playerX">{{partita.userx}} X </p>
         </div>
         
         <div class = "animate__animated animate__fadeInRight">
@@ -14,9 +14,16 @@
         </div>
 
     <div id="game-view" >
-        <div id="game-view-info">   
-                tocca a 
-            </div>
+
+        <div id="game-view-info" v-if="next" >   
+                mossa a {{next}}!
+        </div>
+
+
+        <div id="game-view-info" v-else>   
+                mossa a {{partita.userx}}!
+        </div>
+
             
           <div class = "game-view-squares">
              <cell
@@ -58,7 +65,7 @@ export default {
             bodyModal: String,
             intervalId: undefined,
             arrMossa: undefined,
-           
+            next:undefined
          
         }
     },
@@ -91,18 +98,17 @@ export default {
                 this.arrMossa.forEach((element,index) => {
                     if(this.arrMossa[index]!= 0 && element%2 == 0 ){
                         this.cells[index].symbol = "O";
-                      
-                       
+                        this.next = this.partita.userx;
                     }
                     else if(this.arrMossa[index] != 0 && element%2 != 0  ){
                         this.cells[index].symbol = "X";
-                        
-                        
-                    }
+                        this.next = this.partita.usero;
+                     }
                     
                 });
                 if(game.risultato != 0){
                     eventBus.$emit('partitaFinita');
+                    this.next = undefined;
                     switch(game.risultato){
                         case 1:
                             this.titleModal ='Partita Terminata'; 
@@ -138,7 +144,7 @@ export default {
                     
                 }
             });
-        }, 1000);
+        }, 2000);
         
 
     },
@@ -147,8 +153,12 @@ export default {
     },
     methods:{
         handleClick(cella){
-            
-            
+            if(Math.max(...this.arrMossa)%2 == 0){
+                this.currSymbol = "O"
+            }
+            else{
+                this.currSymbol = "X"
+            }
             if (!this.checkTurn()) return; 
             axios({
                 method: 'put',
@@ -191,9 +201,9 @@ export default {
         checkTurn(){
             let i=1;
             if (this.partita.ido == this.user.id){
+               
                 i = 0;
             }
-
             console.log("vettore mossa: ", this.arrMossa);
             let lastMove = Math.max(...this.arrMossa);
             
@@ -201,10 +211,13 @@ export default {
             if( (lastMove+i)%2 == 0 ){
                 return false;
             }
-            return true;
+            else{
+                return true;
+            }
             
-        }
-       
+            
+        }, 
+        
 
     }
 }
@@ -234,8 +247,8 @@ export default {
 #game-view-info{
     /*Questa e' la striscia superiore in cui viene descritto lo status del gioco (tocca a X, tocca a O, ha vinto X, etc)*/
     padding: 15px;
-    font-family: sans-serif;
-    font-size: 20px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 40px;
     font-weight: bold;
     text-align: center;
     background-color: #eee;
