@@ -29,10 +29,11 @@
 
         <div class="checkbox">
           <!-- <font-awesome-icon icon="fa-check" /> -->
-<!--           <font-awesome-icon :icon="['fas', 'check']" />
- -->          
-            <input type="checkbox">
-            <div class="fas fa-check"></div>
+         
+             <input type="checkbox"> 
+              <font-awesome-icon :icon="['fas', 'check']" class="fas fa-check"/>
+        
+            <!-- <div class="fas fa-check"></div> -->
             Remember me
         </div> 
          <div v-if="spinner" >
