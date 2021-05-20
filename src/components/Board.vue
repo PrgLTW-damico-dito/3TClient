@@ -1,37 +1,32 @@
 <template>
-<div id ="board">
+<div id ="board" >
      <!-- <div id="game-space">
         </div> -->
-
+    
         <div class = "animate__animated animate__fadeInLeft">
-        <img id="playerXPic" src="@/assets/user.png"/>
-        <p id="playerX">{{partita.userx}} X </p>
+            <img id="playerXPic" src="@/assets/user.png"/>
+            <p id="playerX">{{partita.userx}} X </p>
         </div>
         
         <div class = "animate__animated animate__fadeInRight">
         <img id="playerOPic" src="@/assets/user.png"/>
         <p id="playerO">{{partita.usero}} O</p>
         </div>
+        
+        <div id="game-view" >
 
-    <div id="game-view" >
-
-        <div id="game-view-info" >   
-                mossa a {{next}}!
+            <div id="game-view-info" >   
+                    mossa a {{next}}!
+            </div>
+            <div class = "game-view-squares">
+                <cell
+                    v-for="i in cells" :key="i.index" 
+                    :cell = "i" @cell-clicked = "handleClick($event)"></cell>
+            </div>   
         </div>
 
-<!-- 
-        <div id="game-view-info" v-else>   
-                mossa a {{partita.userx}}!
-        </div> -->
+        
 
-            
-          <div class = "game-view-squares">
-             <cell
-                v-for="i in cells" :key="i.index" 
-                :cell = "i" @cell-clicked = "handleClick($event)"></cell>
-        </div>   
-    </div>
-    
     <b-modal @ok="handleOk" ref="my-modal" id="modal-center" title='Partita finita' centered ok-only>
             <p class="my-4">{{titleModal}} <br> {{bodyModal}} </p>
     </b-modal>
@@ -99,7 +94,7 @@ export default {
                 let max = Math.max(...this.arrMossa);
                 if(max%2 == 0) this.next = this.partita.userx;
                 else this.next = this.partita.usero;
-                
+
                 this.arrMossa.forEach((element,index) => {
                     if(this.arrMossa[index]!= 0 && element%2 == 0 ){
                         this.cells[index].symbol = "O";
@@ -285,7 +280,7 @@ export default {
 
 #playerOPic{
     position: absolute;
-    right: 310px;
+    right: 250px;
     top: 160px;
     width: 100px;
 }
