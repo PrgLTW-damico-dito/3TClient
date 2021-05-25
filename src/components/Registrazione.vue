@@ -1,7 +1,8 @@
 <template>
+<b-container class="d-md-flex justify-content-center ">
+  
 
-    <form class="login-form animate__animated animate__fadeInUp container" id="myform" style="margin-top:170px;">
-      
+  <b-form class="login-form animate__animated animate__fadeInUp" id="myform" >
       <h1>Registrazione</h1>
         
         <div class ="textb">
@@ -44,9 +45,10 @@
         </div>
         <h4 style="color:red; font-family: 'Ubuntu' sans-serif;"> {{message}} </h4>
         
-    </form>
+    </b-form> 
+   
 
-
+</b-container>
   
 </template>
 <script>
@@ -121,13 +123,13 @@ export default({
 
 
 <style scoped>
- *{
+/*  *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Ubuntu" sans-serif; 
-  /* font-family: 'Pangolin', cursive; */
-}
+  
+} */
 .animate__animated.animate__bounce {
   --animate-duration: 2s;
 }
@@ -145,7 +147,7 @@ export default({
 }   */
 
 .login-form{
-  
+  margin-top: 170px;
   width: calc(100% - 20px);
   max-width: 500px;
   background-color:rgba(255, 254, 254, 0.911);
