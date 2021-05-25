@@ -6,7 +6,7 @@
     font-size: 24px;
     line-height: 55px;
     float: left;
-    padding: 1px 40px 0px 25px;" ><img src="~@/assets/icon.svg"/> TicTacToe-Arena</b-navbar-brand>
+    padding: 0px 0px 0px 25px;" ><img style="margin-right: 10px" src="~@/assets/icon.svg"/>TicTacToe-Arena</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     

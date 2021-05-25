@@ -1,9 +1,7 @@
 <template>
 <b-container class="d-md-flex justify-content-center ">
   
-  <!-- <b-row  class="text-center  ">
-   <b-col cols="3"></b-col>
-    <b-col cols = "5"> -->
+
  <b-form class="login-form animate__animated animate__fadeInUp" id="myform" >
       
       <h1>Login</h1>
@@ -49,9 +47,7 @@
         <h4> {{message}} </h4>
         
     </b-form> 
-   <!--  </b-col>
-    <b-col cols="2"></b-col>
-  </b-row> -->
+   
 
 </b-container>
 </template>
@@ -164,6 +160,7 @@ export default({
   margin-top: 170px;
   max-width: 500px;
   width: calc(100% - 20px);
+  border: 1px black solid;
  
 }
 /* .login-form{

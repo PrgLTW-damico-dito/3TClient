@@ -152,6 +152,7 @@ export default({
   max-width: 500px;
   background-color:rgba(255, 254, 254, 0.911);
   padding: 50px 40px;
+  border: 1px black solid;
 }
 
 .login-form h1{

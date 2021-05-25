@@ -11,7 +11,7 @@
             <div class = "game-view-squares">
                 <cell
                     v-for="i in cells" :key="i.index" 
-                    :cell = "i" @cell-clicked = "handleClick($event)"></cell>
+                    :cell = "i" :spinner="false" @cell-clicked = "handleClick($event)"></cell>
             </div>   
         </div>
 
@@ -51,7 +51,7 @@ export default {
         let array_cells = new Array();
         
         for(let i=0; i<9; i++){
-                array_cells.push({ numCell: i,  symbol:undefined});
+                array_cells.push({ numCell: i, symbol:undefined, spinner: false});
         }
         return{
             cells: array_cells,
@@ -99,12 +99,11 @@ export default {
                 this.arrMossa.forEach((element,index) => {
                     if(this.arrMossa[index]!= 0 && element%2 == 0 ){
                         this.cells[index].symbol = "O";
-                       
                     }
                     else if(this.arrMossa[index] != 0 && element%2 != 0  ){
                         this.cells[index].symbol = "X";
-                     }
-                    
+                    }
+                    this.cells[index].spinner = false;
                 });
 
                 if(game.risultato != 0){
@@ -153,8 +152,11 @@ export default {
     },
     methods:{
         handleClick(cella){
+            console.log('cell clicked');
            
             if (!this.checkTurn()) return; 
+            cella.spinner = true;
+
             axios({
                 method: 'put',
                 url: '/partite',

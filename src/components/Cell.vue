@@ -1,15 +1,25 @@
 <template>
-    <div id = "game-view-square" @click = "$emit(`cell-clicked`, cell)">{{ cell.symbol }}</div>
-        
+    <div id = "game-view-square" @click = "handleClick">
+        <div v-if="cell.spinner">
+            <b-spinner style="margin-bottom:30px" type="grow" label="Spinning"></b-spinner>
+        </div>
+
+       {{ cell.symbol }}
+    </div>
+      
 </template>
 
 <script>
+
 export default {
     name: 'cell',
     props:{
-        cell: Object,
-       
-    
+        cell: Object
+    },
+    methods: {
+        handleClick: function(){
+            this.$emit(`cell-clicked`, this.cell);
+        }
     }
 }
 </script>
