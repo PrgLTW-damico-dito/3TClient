@@ -160,7 +160,7 @@ export default({
   margin-top: 170px;
   max-width: 500px;
   width: calc(100% - 20px);
-  border: 1px black solid;
+  
  
 }
 /* .login-form{
