@@ -1,19 +1,19 @@
 <template>
-<body>
-    <!-- <div v-html = 'require("../Schermata di Gioco/index.html")'></div> -->
-   <!--  <a target="_blank" href="../Schermata di Gioco/index.html">Gicoa</a> -->
-    <form class="login-form animate__animated animate__fadeInUp" id="myform" >
-      <h3> {{message}} </h3>
+<b-container class="d-md-flex justify-content-center ">
+  
+  <!-- <b-row  class="text-center  ">
+   <b-col cols="3"></b-col>
+    <b-col cols = "5"> -->
+ <b-form class="login-form animate__animated animate__fadeInUp" id="myform" >
+      
       <h1>Login</h1>
-        <!-- <h1>Login</h1> -->
+        
         <div class ="textb">
             <input type="text" id = "username" v-model="username" required>
-            <!-- <input type="text" placeholder="Username" v-model="username" class="form-control" id="inputUsername" aria-describedby="emailHelp"> -->
             <div class="placeholder" >Username</div>
         </div>
 
         <div v-if="pswVisible" class ="textb" >
-            <!-- <input type="password" placeholder="Password" v-model="password" class="form-control" id="inputPassword" > -->
             <input type="password" v-model="password"  id = "password" required>
             <div class="placeholder">Password</div>
             <div @click = "pswVisible = false">
@@ -23,7 +23,6 @@
         
 
         <div v-else class ="textb">
-            <!-- <input type="password" placeholder="Password" v-model="password" class="form-control" id="inputPassword" > -->
             <input type="text" v-model="password"  id = "password" required>
             <div class="placeholder">Password</div>
             <div @click = "pswVisible = true" >
@@ -31,32 +30,30 @@
             </div>      
         </div>
 
-        <div class="checkbox">
-          <!-- <font-awesome-icon icon="fa-check" /> -->
-<!--           <font-awesome-icon :icon="['fas', 'check']" />
- -->          
+        <!-- <div class="checkbox">
             <input type="checkbox">
             <font-awesome-icon :icon="['fas', 'check']" class="fas fa-check"/>
-            <!-- <div class="fas fa-check"></div> -->
             Remember me
-        </div> 
+        </div>  -->
+        
          <div v-if="spinner" >
             <div class="spinner-border" role="status"></div>
-            <!-- <button type = "submit" form = "myform" class="btn spinner-border" role="status">
-              <font-awesome-icon :icon="['fas', 'arrow-right']" />
-            </button> -->
         </div>
-        <div v-else><!-- <div class="d-grid gap-4 d-md-flex "> -->
+        <div v-else>
             <button :disabled="btnDisabled"   @click = "handleLogin" type = "submit" form = "myform" class="btn ">
               <font-awesome-icon :icon="['fas', 'arrow-right']" />
             </button>
             <a href="#" @click = "handleRegistrazione">Crea un Account</a> 
             
         </div>
+        <h4> {{message}} </h4>
         
-        
-    </form>
-</body>
+    </b-form> 
+   <!--  </b-col>
+    <b-col cols="2"></b-col>
+  </b-row> -->
+
+</b-container>
 </template>
 
 <script>
@@ -100,7 +97,7 @@ export default({
       .then(response => {
         let user = response.data;
         user.password = this.password;
-        this.message = 'Benvenut* ' + user.username;
+        this.message = 'Ciao ' + user.username;
         this.spinner = false;
         sessionStorage.setItem('user', JSON.stringify(user));
         EventBus.$emit('logged');
@@ -129,34 +126,29 @@ export default({
     handleRegistrazione(){
       router.push('Registrazione');
     },
-    /* handleRememberMe(){
-      if( (localStorage.getItem('rememberMe_username')!= null ) && (localStorage.getItem('rememberMe_password') != null) ){
-        console.log("remember me");
-        localStorage.setItem('rememberMe_username',this.username );
-        localStorage.setItem('rememberMe_password',this.password );
-      }
-    } */
+  
 
 
     }
-})
+}) 
 </script>
 
 <style scoped>
- *{
+
+/* *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Ubuntu" sans-serif; 
-  /* font-family: 'Pangolin', cursive; */
-}
+  
+}  */
 .animate__animated.animate__bounce {
   --animate-duration: 2s;
 }
 
-body{
+/* body{
   background: url("~@/assets/mybg2.jpg")no-repeat center; 
-  /* background-color: #111; */
+  
   background-size: cover; 
   min-height: 100vh; 
   display: flex; 
@@ -165,15 +157,23 @@ body{
   margin-left: 0px;
   margin-right: 0px;
   margin-top: 67px;
-}  
-
+}  */  
 .login-form{
+  background-color:  rgba(255, 254, 254, 0.911);
+  padding: 50px 40px;
+  margin-top: 170px;
+  max-width: 500px;
+  width: calc(100% - 20px);
+ 
+}
+/* .login-form{
+  margin-left: 700px;
   
   width: calc(100% - 20px);
   max-width: 500px;
-  background-color: rgba(255, 255, 255, 0.945);
-  padding: 50px 40px;
-}
+  background-color: rgba(180, 172, 172, 0.945);
+  
+} */
 
 .login-form h1{
   text-align: center;

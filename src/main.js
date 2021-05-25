@@ -1,4 +1,7 @@
+import '@babel/polyfill'
+import 'mutationobserver-shim'
 import Vue from 'vue'
+import './plugins/bootstrap-vue'
 import App from './App.vue'
 import router from './router'
 
@@ -15,18 +18,17 @@ library.add(faCheck)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
-
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
-Vue.use(BootstrapVueIcons) 
+Vue.use(BootstrapVueIcons)  
 
 Vue.config.productionTip = false
-import axios from 'axios';
 
+import axios from 'axios';
 axios.defaults.baseURL = 'https://server3t.herokuapp.com';
 //axios.defaults.baseURL = 'http://localhost:3000';
 axios.defaults.headers.post['Content-Type'] = 'application/json';

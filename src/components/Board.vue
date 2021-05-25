@@ -1,20 +1,10 @@
 <template>
-<div id ="board" >
-     <!-- <div id="game-space">
-        </div> -->
-    
-        <div class = "animate__animated animate__fadeInLeft">
-            <img id="playerXPic" src="@/assets/user.png"/>
-            <p id="playerX">{{partita.userx}} X </p>
-        </div>
-        
-        <div class = "animate__animated animate__fadeInRight">
-        <img id="playerOPic" src="@/assets/user.png"/>
-        <p id="playerO">{{partita.usero}} O</p>
-        </div>
-        
-        <div id="game-view" >
+<div id ="board" class="container" >
 
+    <div class="row ">
+        
+
+       <div id="game-view" class="col-sm-6">
             <div id="game-view-info" >   
                     mossa a {{next}}!
             </div>
@@ -25,6 +15,17 @@
             </div>   
         </div>
 
+        <div id="playerX" class = "col-md-3 order-first animate__animated animate__fadeInLeft"  >
+            <img id="playerPic" src="@/assets/user.png"/>
+            <p id="namePlayer">{{partita.userx}} X </p>
+        </div>
+        
+        <div id="playerO" class = "col-md-3 order-last animate__animated animate__fadeInRight " style="left:80px" >
+            <img id="playerPic" src="@/assets/user.png"/>
+            <p id="namePlayer">{{partita.usero}} O</p>
+        </div>
+        
+    </div>
         
 
     <b-modal @ok="handleOk" ref="my-modal" id="modal-center" title='Partita finita' centered ok-only>
@@ -143,7 +144,7 @@ export default {
                     
                 }
             });
-        }, 2000);
+        }, 1000);
         
 
     },
@@ -223,19 +224,21 @@ export default {
   grid-template-columns: auto auto auto;
   padding: 10px;
 }  */
-#board{
+/* #board{
     
-    margin-left: 0px;
+margin-left: 0px;
   margin-right: 0px;
   margin-top: 0px;
   margin-bottom: 0px;
-}
+} */
 #game-view{
     /* Questo e' il "quadrato" in cui e' contenuto l'intero gioco*/
-    width: 500px;
-    margin: 180px;
+    width: 400px;
+    margin-top: 200px;
+    /* margin-left: 200px;
+    margin-right: 100px;  */
     border: 1px solid #000;
-    margin-left: 650px;
+    /* margin-left: 650px; */
 }
 
 #game-view-info{
@@ -247,11 +250,12 @@ export default {
     text-align: center;
     background-color: #eee;
     
+    
 }
 
 .game-view-squares{
     /*Il contenitore dei vari Squares*/
-    height: 500px;
+    height: 480px;
     display: flex;
     flex-wrap: wrap;
     padding: 25px;
@@ -259,51 +263,95 @@ export default {
 
 }
 
-/* #game-space{
-    position: absolute;
-    right: 650px;
-    left: 400px;
-    top: 100px;
-    width: 1450px;
-    height: 800px;
-    margin: 0 auto;
-    background-color: rgb(119, 64, 64);
-    opacity: 0.1;
-} */
 
-#playerXPic{
-    position: absolute;
-    left: 150px;
-    top: 160px;
+#playerPic{
+    
     width: 100px;
 }
-
-#playerOPic{
-    position: absolute;
-    right: 250px;
-    top: 160px;
-    width: 100px;
+#playerX, #playerO{
+    
+    margin-top: 200px;
+    
 }
 
+#namePlayer{
+    width: 100px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 768px){
+#playerPic{
+    width: 50px;
+}
+#namePlayer{
+    width: 100px;
+    font-size: 30px;
+}
+
+#game-view{
+    height: 600px;
+    
+    margin-top: 100px; 
+
+}
+
+#player{
+    
+    top: 200px;
+    
+}
+/*
+#game-view-info{
+    padding: 15px;
+    margin-left: 50px;
+    font-size: 25x;    
+}
+
+.game-view-squares{
+   height: 480px;
+    width: 400px;
+    padding: 25px;
+
+}*/
+} 
+
+@media only screen and (max-width: 600px) {
+#playerPic{
+    width: 50px;
+}
+#namePlayer{
+    width: 100px;
+    font-size: 30px;
+}
+
+#game-view{
+    height: 500px;
+    bottom: 250px;
+    margin-top: 0px; 
+    margin-left: 40px;
+
+}
+.game-view-squares{
+   height: 400px;
+    width: 350px;
+    
+    padding: 20px;
+
+}
 
 #playerX{
-    position: absolute;
-    left: 290px;
-    top: 200px;
-    width: 100px;
-    font-family: 'Permanent Marker', cursive;
-    font-size: 50px;
-    font-weight: bold;
+    
+    top: 450px;
+    margin-left: 30px;
+    
 }
-
 #playerO{
-    position: absolute;
-    right: 430px;
-    top: 200px;
-    width: 100px;
-    font-family: 'Permanent Marker', cursive;
-    font-size: 50px;
-    font-weight: bold;
+    
+    bottom: 410px;
+    margin-left: 230px;
+    
 }
-
+}
 </style>

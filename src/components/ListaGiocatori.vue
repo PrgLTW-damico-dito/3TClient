@@ -1,45 +1,50 @@
 <template>
 <div id = "listaGiocatori" class="container-flow">
-   <table class="table ">
-    <thead>
-        <tr>
-            <th scope="col" >
-                <button type="button" 
-                        class="btn btn-light" 
-                        @click =  "sorted('stato')" >
-                    Stato
-                </button>
-            </th>
-            <th scope="col">
-                <button type="button" 
-                        class="btn btn-light" 
-                        @click =  "sorted('giocatore')">
-                    Giocatore
-                </button>
-            </th>
-            <th scope="col">
-                <button type="button" 
-                        class="btn btn-light"  
-                        @click =  "sorted('vinte')">
-                    Vinte
-                </button>
+   <table style="margin-top:100px" class="table">
+        <thead>
+            <tr>
+                <th scope="col" >
+                    <button type="button" 
+                            class="btn btn-light" 
+                            @click =  "sorted('stato')" >
+                        Stato
+                    </button>
                 </th>
-            <th scope="col">
-                <button type="button" 
-                        class="btn btn-light" 
-                        @click =  "sorted('perse')" >
-                    Perse
-                </button>
-            </th>
-            <th scope="col">
-                <button type="button" 
-                        class="btn btn-light" 
-                        @click =  "sorted('patte')" >
-                    Patte
-                </button>
-            </th>
-            <th scope="col"></th>
-        </tr>
+
+                <th scope="col">
+                    <button type="button" 
+                            class="btn btn-light" 
+                            @click =  "sorted('giocatore')">
+                        Giocatore
+                    </button>
+                </th>
+
+                <th scope="col">
+                    <button type="button" 
+                            class="btn btn-light"  
+                            @click =  "sorted('vinte')">
+                        Vinte
+                    </button>
+                </th>
+
+                <th scope="col">
+                    <button type="button" 
+                            class="btn btn-light" 
+                            @click =  "sorted('perse')" >
+                        Perse
+                    </button>
+                </th>
+
+                <th scope="col">
+                    <button type="button" 
+                            class="btn btn-light" 
+                            @click =  "sorted('patte')" >
+                        Patte
+                    </button>
+                </th>
+
+                <th scope="col"></th>
+            </tr>
         </thead>
     
         <tbody v-if="orderBy">
@@ -159,7 +164,11 @@ export default({
             switch(a){
                 case 'stato':
                     this.orderBy=a;
-                    this.allPlayer.sort((a,b) => {return a.stato-b.stato});
+                    this.allPlayer.sort((a,b) => {
+                        let aord = a.stato == 0 ? 3 : (a.stato == 2 ? 2 : 1);
+                        let bord = b.stato == 0 ? 3 : (b.stato == 2 ? 2 : 1);
+                        return aord - bord;
+                    });
                     break;
                 case 'giocatore':
                     this.orderBy=a;

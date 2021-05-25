@@ -1,62 +1,85 @@
 <template>
-    <nav>
-        <p>TicTacToe-Arena</p>
+<div>
+<b-navbar toggleable="lg" type="light" variant="light" fixed="top">
+    <b-navbar-brand style="font-family: arial;
+    color: #bc252a;
+    font-size: 24px;
+    line-height: 55px;
+    float: left;
+    padding: 1px 40px 0px 25px;" ><img src="~@/assets/icon.svg"/> TicTacToe-Arena</b-navbar-brand>
 
-        <ul>
-            <template v-if="logged && in_partita">
-                <li><router-link to="/">Home</router-link></li>
-                <li><router-link to="/listaGiocatori">Giocatori</router-link></li>
-                <li><router-link to="/arena">Arena</router-link></li>
-                <!-- <li id = "logout"><router-link to ="/"><logout></logout></router-link></li>
- -->
-                <li>
-                    <b-dropdown variant="outline-danger" class="dropdown">
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+    
+   
+    <template v-if="logged && in_partita">
+        <b-collapse id="nav-collapse" is-nav>
+            <b-navbar-nav>
+                <b-nav-item><router-link to="/">Home</router-link></b-nav-item>
+                <b-nav-item><router-link to="/listaGiocatori">Giocatori</router-link></b-nav-item>
+                <b-nav-item><router-link to="/arena">Arena</router-link></b-nav-item>
+            </b-navbar-nav>
+            <b-navbar-nav class="ml-auto">
+                    <b-dropdown text="Outline Danger" variant="outline-danger" class="m-2" right>
                         <template #button-content>
-                            <b-icon icon="person-fill"></b-icon>  {{user}}
+                            <b-icon icon="person-fill"></b-icon> 
+                            <em>{{user}}</em>
                         </template>
-                        <b-dropdown-item-button><router-link to="/profilo">Profilo</router-link></b-dropdown-item-button>
-                        <b-dropdown-item-button><router-link to ="/"><logout></logout></router-link></b-dropdown-item-button>
-                    </b-dropdown>
-                </li>
-            </template>
+                        <b-dropdown-item><router-link to="/profilo">Profilo</router-link></b-dropdown-item>
+                        <b-dropdown-item><router-link to ="/"><logout></logout></router-link></b-dropdown-item>
+                    </b-dropdown>     
+            </b-navbar-nav>
+        </b-collapse>
+    </template>
 
-            <template v-else-if="logged && !in_partita">
-                <li><router-link to="/">Home</router-link></li>
-                <li><router-link to="/listaGiocatori">Giocatori</router-link></li>
-                <li><router-link to="/">Arena</router-link></li>
-                <!-- <li id = "logout"><router-link to ="/"><logout></logout></router-link></li> -->
-                
-                <!-- <li class="user">
-                    <router-link to="/profilo">
+    
+    <template v-else-if="logged && !in_partita">
+        <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+            <b-nav-item><router-link to="/">Home</router-link></b-nav-item>
+            <b-nav-item><router-link to="/listaGiocatori">Giocatori</router-link></b-nav-item>
+            <b-nav-item><router-link to="/">Arena</router-link></b-nav-item>
+        </b-navbar-nav>
+
+        
+        <b-navbar-nav class="ml-auto">
+             <b-dropdown text="Outline Danger" variant="outline-danger" class="m-2" right>
+                 
+                <template #button-content>
                     <b-icon icon="person-fill"></b-icon> 
-                        {{user}}
-                    </router-link>
-                </li> -->
-                <li>
-                    <b-dropdown variant="outline-danger" class="dropdown">
-                        <template #button-content>
-                            <b-icon icon="person-fill"></b-icon>  {{user}}
-                        </template>
-                        <b-dropdown-item-button><router-link to="/profilo">Profilo</router-link></b-dropdown-item-button>
-                        <b-dropdown-item-button><router-link to ="/"><logout></logout></router-link></b-dropdown-item-button>
-                    </b-dropdown>
-                </li> 
-            </template>
+                    <em>{{user}}</em>
+                </template>
+                <b-dropdown-item><router-link to="/profilo">Profilo</router-link></b-dropdown-item>
+                <b-dropdown-item><router-link to ="/"><logout></logout></router-link></b-dropdown-item>
+            </b-dropdown>
+        </b-navbar-nav>
+    </b-collapse>
+    </template>
 
-            <template v-else>
-                <li><router-link to="/">Home</router-link></li>
-                <li id="login">
-                    <router-link to="/login">
+
+   
+    <template v-else>
+    <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+            <b-nav-item><router-link to="/"><a>Home</a></router-link></b-nav-item>
+            </b-navbar-nav>
+
+            
+            <b-navbar-nav class="ml-auto">
+            <router-link to="/login">
                         <b-button variant="outline-danger">Login</b-button>
-                    </router-link>
-                </li> 
-            </template>
-        </ul>
+            </router-link>
+        </b-navbar-nav>
+    </b-collapse>
 
-        <keep-alive>
+    </template>
+
+    
+  </b-navbar> 
+  <keep-alive>
             <router-view/>
-        </keep-alive>  
-   </nav>
+    </keep-alive>
+</div>
+
 
 </template>
 
@@ -68,10 +91,11 @@ export default {
   components: { Logout },
     name: 'Header',
     data(){
+        //console.log(sessionStorage.getItem('user'));
         return {
-            logged: false,
+            logged: JSON.parse(sessionStorage.getItem('user')) ? true : false,
             in_partita: false,
-            user: undefined,
+            user: JSON.parse(sessionStorage.getItem('user')) ? JSON.parse(sessionStorage.getItem('user')).username : undefined,
         }
     },
     mounted: function(){
@@ -97,93 +121,10 @@ export default {
 }
 </script>
 
-<style scoped>
-* {
-    margin: 0;
-    padding: 0;
-    
+<style lang="scss" scoped>
+a{
+    color:black;
 }
-
-/* body{
-    background: url(mybg2.jpg)no-repeat center;
-    background-size: cover;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-} */
-.dropdown{
-    margin-left: 1200px;
-}
-nav{
-    width: 100%;
-    height: 70px;
-    background-color: #fff;
-    top: 0;
-    position: fixed;
-     /* border-bottom: 1px solid red; */
-    background-color: rgb(255, 250, 250);
-    
-}
-
-nav p{
-    font-family: arial;
-    color: #bc252a;
-    font-size: 34px;
-    line-height: 55px;
-    float: left;
-    padding: 1px 40px 0px 25px;
-
-}
-
-nav ul{
-    float:left;
-}
-
-nav ul li{
-    float: left;
-    list-style: none;
-    position: relative;
-}
-
-nav ul li a{
-    display: block;
-    font-family: arial;
-    color: #222;
-    font-size: 18px;
-    padding: 20px 14px;
-    text-decoration: none;
-}
-
-#login {
-    display: block;
-    font-family: arial;
-    color: #222;
-    font-size: 18px;
-    position: absolute;
-    left: 1600px;
-    text-decoration: none;
-    
-}
-
-#logout {
-    display: block;
-    font-family: arial;
-    color: #222;
-    font-size: 18px;
-    position: absolute;
-    left: 1600px;
-    text-decoration: none;
-}
-
-.dropdown{
-    display: block;
-    font-family: arial;
-    color: #222;
-    position: absolute;
-    left: 1100px;
-    text-decoration: none;
-    margin: 15px;
-} 
 
 
 </style>
