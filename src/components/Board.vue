@@ -2,8 +2,6 @@
 <div id ="board" class="container" >
 
     <div class="row ">
-        
-
        <div id="game-view" class="col-sm-6">
             <div id="game-view-info" >   
                     mossa a {{next}}!
@@ -26,8 +24,13 @@
         </div>
         
     </div>
-        
-
+    <div class = "row">
+        <div id="chat-msg" class ="col" style="left:280px; margin-top:20px">
+            <chat 
+                :chat="chat" :partita="partita">
+            </chat>
+        </div>
+    </div>
     <b-modal @ok="handleOk" ref="my-modal" id="modal-center" title='Partita finita' centered ok-only>
             <p class="my-4">{{titleModal}} <br> {{bodyModal}} </p>
     </b-modal>
@@ -41,11 +44,12 @@ import Cell from './Cell.vue';
 import axios from 'axios';
 import router from '../router';
 import eventBus from '../event-bus';
+import Chat from '../components/Chat'
 
 export default {
     name: 'board',
     components:{
-        Cell
+        Cell, Chat
     }, 
     data() {
         let array_cells = new Array();
@@ -61,7 +65,9 @@ export default {
             bodyModal: String,
             intervalId: undefined,
             arrMossa: undefined,
-            next:undefined
+            next:undefined,
+            chat: undefined,
+            
          
         }
     },
@@ -87,12 +93,18 @@ export default {
                 }
             })
             .then(response => {
-                let game = response.data;
-               
+                let game = response.data.partita;
+                
+                this.chat = response.data.chat.reverse();
+                console.log("CHAT:", this.chat);
+                console.log("GAME: ", game);
+                
                 this.arrMossa = game.mossa.split('').map(x => parseInt(x));
-                console.log("arrMossa: ", this.arrMossa);
+                // console.log("arrMossa: ", this.arrMossa);
                 //modifico stringa next che da l'informazione su quale gicatore deve fare la prossima mossa 
+                
                 let max = Math.max(...this.arrMossa);
+                
                 if(max%2 == 0) this.next = this.partita.userx;
                 else this.next = this.partita.usero;
 
@@ -125,6 +137,7 @@ export default {
                             this.showModal();
                             break;
                     }
+                    
                     
                 }
             })
@@ -353,6 +366,10 @@ margin-left: 0px;
     
     bottom: 410px;
     margin-left: 230px;
+    
+}
+#chat-msg{
+    bottom: 400px;
     
 }
 }
