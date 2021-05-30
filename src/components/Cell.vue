@@ -1,12 +1,18 @@
 <template>
-    <div id = "game-view-square" @click = "$emit(`cell-clicked`, cell)">
+    <!-- <div id = "game-view-square" @click = "$emit(`cell-clicked`, cell)">
         <div v-if="cell.spinner">
             <b-spinner style="margin-bottom:30px" type="grow" label="Spinning"></b-spinner>
         </div>
 
        {{ cell.symbol }}
+    </div> -->
+    
+    <div class="col-4 cell" @click = "$emit(`cell-clicked`, cell)">
+        <div v-if="cell.spinner">
+            <b-spinner style="margin-bottom:20px" type="grow" label="Spinning"></b-spinner>
+        </div>
+       {{ cell.symbol }}
     </div>
-      
 </template>
 
 <script>
@@ -20,34 +26,25 @@ export default {
 </script>
 
 <style scoped>
-#game-view-square{
+.cell{
+    /* border: 5px solid brown; */
+    width: 100px;
+    height: 100px;
     
-    width: 33.33%;
-    height: 33.33%;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-
+    font-size: 60px;
     font-family: 'Permanent Marker', cursive;
-    font-size: 75px;
-    text-transform: uppercase;
-
     border-radius: 15px;
     cursor: pointer;
     user-select: none;
-    -moz-user-select: none;
+    -moz-user-select: none;   
+    text-align: center;
+
 }
+.cell.highlighted {color: green}    
+.cell:hover {background-color:#eee}
 
-
-#game-view-square.highlighted {color: green}    
-
-#game-view-square:hover {background-color: #eee}
-
-#game-view-square:nth-child(-n+6) {border-bottom: 15px solid brown}     /*Il bordo inferiore di ogni Square, di colore marrone*/
-
-#game-view-square:nth-child(3n+1),
-#game-view-square:nth-child(3n+2) {border-right: 15px solid brown}      /*Il bordo laterale di ogni Square, anch'esso di colore marrone*/
+.cell:nth-child(-n+6) {border-bottom: 10px solid brown}    
+.cell:nth-child(3n+1),
+.cell:nth-child(3n+2) {border-right: 10px solid brown}      
 
 </style>

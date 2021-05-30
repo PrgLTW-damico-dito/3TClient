@@ -5,8 +5,10 @@ import Registrazione from './components/Registrazione.vue';
 import Login from './components/Login.vue';
 import ListaGiocatori from './components/ListaGiocatori.vue';
 import Logout from './components/Logout.vue';
-import Board from './components/Board.vue';
+/* import Board from './components/Board.vue'; */
 import Profilo from './components/Profilo.vue';
+import Arena from './components/Arena.vue';
+import ArenaVuota from './components/ArenaVuota.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -30,10 +32,20 @@ const routes = [
     name:'ListaGiocatori',
     component: ListaGiocatori
   },
-  {
+  /* {
     path:'/arena',
     name:'Arena',
     component: Board
+  }, */
+  {
+    path:'/arena',
+    name:'Arena',
+    component: Arena
+  },
+  {
+    path:'/arenaVuota',
+    name:'ArenaVuota',
+    component: ArenaVuota
   },
   {
     path: '/logout',
@@ -44,7 +56,8 @@ const routes = [
     path: '/profilo',
     name: 'Profilo',
     component: Profilo
-  }
+  },
+ 
 ]
 
 const router = new VueRouter({

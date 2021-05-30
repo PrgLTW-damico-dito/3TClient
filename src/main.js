@@ -29,8 +29,8 @@ Vue.use(BootstrapVueIcons)
 Vue.config.productionTip = false
 
 import axios from 'axios';
-axios.defaults.baseURL = 'https://server3t.herokuapp.com';
-//axios.defaults.baseURL = 'http://localhost:3000';
+//axios.defaults.baseURL = 'https://server3t.herokuapp.com';
+axios.defaults.baseURL = 'http://localhost:3000';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 new Vue({

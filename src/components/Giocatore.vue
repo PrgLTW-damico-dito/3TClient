@@ -16,22 +16,22 @@
                 <circle cx="10" cy="10" r="10" stroke-width="3" fill="yellow" />
             </svg> 
         </th> 
-                <td>{{player.username}}</td>
-                <td>{{player.vinte}}</td>
-                <td>{{player.perse}}</td>
-                <td>{{player.patte}}</td>
-                <td v-if="player.stato==1 && checkPlayer()">
-                    <div v-if="spinner">
-                        <div class="spinner-border  text-primary text-align-center" role="status"></div>
-                    </div>
-                    <div v-else-if="in_partita">
-                        <button :disabled="true" class="btn btn-primary">Sfida!</button>
-                    </div>
-                    <div v-else>
-                        <button @click = "creaPartita" class="btn btn-primary" type="submit">Sfida!</button>
-                    </div>
-                </td>
-                <td v-else></td>
+            <td>{{player.username}}</td>
+            <td>{{player.vinte}}</td>
+            <td>{{player.perse}}</td>
+            <td>{{player.patte}}</td>
+            <td v-if="player.stato==1 && checkPlayer()">
+                <div v-if="spinner">
+                    <div class="spinner-border  text-primary text-align-center" role="status"></div>
+                </div>
+                <div v-else-if="in_partita">
+                    <button :disabled="true" class="btn btn-primary">Sfida!</button>
+                </div>
+                <div v-else>
+                    <button @click = "creaPartita" class="btn btn-primary" type="submit">Sfida!</button>
+                </div>
+            </td>
+            <td v-else></td>
     </tr>
 
    

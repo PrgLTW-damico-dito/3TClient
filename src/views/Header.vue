@@ -37,7 +37,7 @@
         <b-navbar-nav>
             <b-nav-item><router-link to="/">Home</router-link></b-nav-item>
             <b-nav-item><router-link to="/listaGiocatori">Giocatori</router-link></b-nav-item>
-            <b-nav-item><router-link to="/">Arena</router-link></b-nav-item>
+            <b-nav-item><router-link to="/arenaVuota">Arena</router-link></b-nav-item>
         </b-navbar-nav>
 
         

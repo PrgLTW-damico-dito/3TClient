@@ -1,51 +1,55 @@
 <template>
 
-    <div class="container">
+    <div class="container" >
         <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 "> -->
+            <div class="col">
                 
-                <div class="card">
-                    <div class="card-header">
+                <div class="card " >
+                    <div class="card-header" >
                         
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col-10" style="font-family: 'Permanent Marker', cursive; font-size:27px; text-align:center">
                                 Chat
                             </div>
 
-                            <div class="col-2">
+                            <!-- <div class="col-2">
                                 <button 
                                     class="btn btn-primary" 
                                     type="button">
                                     <b-icon icon="chevron-bar-down" ></b-icon>
                                     
                                 </button>
-                            </div>
+                            </div> -->
                         </div>
 
                     </div>
 
                         
-                    <div class="card-body height3">
-                        <!-- <div class="card-footer"> -->
-                            <div class="row">
-                                <div class="col-10">
-                                    <input v-model="msg" type="text" class="form-control" id="message" placeholder="Messaggio"/>
-                                </div>
+                    <div class="card-body height3 " >
+                        <div class="row">
+                            <div class="col-10 " >
+                                <input @keydown.enter="handleClick" v-model="msg" type="text" class="form-control" id="message" placeholder="Messaggio"/>
+                            </div>
 
-                                <div class="col-2">
-                                    <button @click="handleClick" :disabled="btnDisabled" type="submit" class="btn btn-primary">
-                                        <b-icon icon="chevron-double-right"></b-icon>
-                                    </button>
-                                </div>
-                            <!-- </div> -->
+                            <div class="col-2">
+                                <button @click="handleClick" :disabled="btnDisabled" type="submit" class="btn ">
+                                    <b-icon icon="chevron-double-right"></b-icon>
+                                </button>
+                            </div>
+                     
                         </div>
-                        <ul class="chat-list">
-
+ 
+    
+                        <ul class="chat-list " >
+                            
                             <chat-msg 
                                 v-for="i in chat" :key="i.index" :msg="i" 
                                 :username="parseUsername(i)" :pos="parsePos(i)">
                             </chat-msg>
+                            
                         </ul>
+                        
 
                     </div>
 
@@ -138,29 +142,21 @@ export default {
 /* body{
     background:#eee;    
 } */
+
 .chat-list {
     padding: 0;
     font-size: .8rem;
     margin-top: 20px;
+ 
 }
 
 .chat-list li {
     margin-bottom: 10px;
     overflow: auto;
     color: #ffffff;
+    
 }
 
-/* .chat-list .chat-img {
-    float: left;
-    width: 48px;
-} */
-
-/* .chat-list .chat-img img {
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
-    width: 100%;
-} */
 
 .chat-list .chat-message {
     -webkit-border-radius: 50px;
@@ -170,6 +166,7 @@ export default {
     display: inline-block;
     padding: 10px 20px;
     position: relative;
+    
 }
 
 .chat-list .chat-message:before {
@@ -178,6 +175,7 @@ export default {
     top: 15px;
     width: 0;
     height: 0;
+    
 }
 
 .chat-list .chat-message h5 {
@@ -185,24 +183,28 @@ export default {
     font-weight: 600;
     line-height: 100%;
     font-size: .9rem;
+    
 }
 
 .chat-list .chat-message p {
     line-height: 18px;
     margin: 0;
     padding: 0;
+    
 }
 
 .chat-list .chat-body {
     margin-left: 20px;
     float: left;
     width: 70%;
+    
 }
 
 .chat-list .in .chat-message:before {
     left: -12px;
     border-bottom: 20px solid transparent;
     border-right: 20px solid #5a99ee;
+    
 }
 
 .chat-list .out .chat-img {
@@ -213,22 +215,26 @@ export default {
     float: right;
     margin-right: 20px;
     text-align: right;
+    
 }
 
 .chat-list .out .chat-message {
     background: #fc6d4c;
+    
 }
 
 .chat-list .out .chat-message:before {
     right: -12px;
     border-bottom: 20px solid transparent;
     border-left: 20px solid #fc6d4c;
+    
 }
 
 .card .card-header:first-child {
     -webkit-border-radius: 0.3rem 0.3rem 0 0;
     -moz-border-radius: 0.3rem 0.3rem 0 0;
     border-radius: 0.3rem 0.3rem 0 0;
+    
 }
 
 .card .card-header {
@@ -239,6 +245,7 @@ export default {
     position: relative;
     font-weight: 600;
     color: #0e0c0c;
+    
 }
 
 .card .card-footer {
@@ -249,8 +256,8 @@ export default {
     position: relative;
     font-weight: 600;
     color: #ffffff;
+    
 }
-
 
 /* .content{
     margin-top:40px;    

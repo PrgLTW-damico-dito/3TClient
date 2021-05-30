@@ -1,6 +1,9 @@
 <template>
 <div>
     <li :class="pos">
+        <div class="chat-img">
+            <img src="@/assets/user.png" />
+        </div>
         <div class="chat-body">
             <div class="chat-message">
                 <h5>{{username}}</h5>
@@ -32,5 +35,15 @@ export default {
 </script>
 
 <style>
+.chat-list .chat-img {
+    float: left;
+    width: 45px;
+}
 
+.chat-list .chat-img img {
+    /* -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px; */
+    width: 100%;
+} 
 </style>

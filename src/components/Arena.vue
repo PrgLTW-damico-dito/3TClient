@@ -1,48 +1,52 @@
 <template>
-    <div id ="board" class="container-fluid" >
+<div class="container">
+    <div class="row" style="margin-top:120px">
+        <div id="player" class = " col-md-6 animate__animated animate__backInDown"  >
+            <img src="@/assets/user.png" style="width: 60px;"/>
+            <p id="namePlayer">{{partita.userx}} X </p>
+            </div>
+        <div id="player" class = " col-md-6 animate__animated animate__backInDown ">
+            <img src="@/assets/user.png" style="width: 60px;"/>
+            <p id="namePlayer">{{partita.usero}} O</p>
+        </div>
+    </div>
 
-        <div class="row ">
-            <div class="col-6">                      
-                <div id="playerX" class = "col-md-3 order-first animate__animated animate__fadeInLeft"  >
-                    <img id="playerPic" src="@/assets/user.png"/>
-                    <p id="namePlayer">{{partita.userx}} X </p>
-                </div>
-                <div class="col-6">                      
-                    <div id="playerO" class = "col-md-3 order-last animate__animated animate__fadeInRight " style="left:80px" >
-                        <img id="playerPic" src="@/assets/user.png"/>
-                        <p id="namePlayer">{{partita.usero}} O</p>
+    <div class="row">
+        <div class="col-12 col-md-6 col-sm-8" >
+            
+
+            <div class="row" id="board">
+                <div class="col-12">
+
+                    <div id="game-view-info" >   
+                        mossa a {{next}}!
                     </div>
-                </div>
-            </div>
 
-            <div class="row ">
-                <div id="game-view" class="col-6">
-                        <div id="game-view-info" >   
-                                mossa a {{next}}!
-                        </div>
-                        <div class = "game-view-squares">
-                            <cell
-                                v-for="i in cells" :key="i.index" 
-                                :cell = "i" :spinner="false" @cell-clicked = "handleClick($event)"></cell>
-                        </div>   
                 </div>
-            </div>
-
-            <div class = "col">
-                <div id="chat-msg">
-                    <chat 
-                        :chat="chat" :partita="partita">
-                    </chat>
+                <div class="col-2"></div>
+                <div class="col-8" id="cells">
+                    <div class="row">
+                        <cell v-for="c in cells" :key="c.index" 
+                            :cell = "c" :spinner="false" @cell-clicked = "handleClick($event)"></cell>
+                    </div>   
                 </div>
             </div>
         </div>
 
-        <b-modal @ok="handleOk" ref="my-modal" id="modal-center" title='Partita finita' centered ok-only>
-                <p class="my-4">{{titleModal}} <br> {{bodyModal}} </p>
-        </b-modal>
+        <div class="col-12 col-md-6 col-sm-4 chat-panel">
+            <chat 
+                :chat="chat" :partita="partita">
+            </chat>
+        </div>
 
     </div>
-    
+
+
+    <b-modal @ok="handleOk" ref="my-modal" id="modal-center" title='Partita finita' centered ok-only>
+                <p class="my-4">{{titleModal}} <br> {{bodyModal}} </p>
+    </b-modal>
+</div>
+ 
 </template>
 
 <script>
@@ -89,7 +93,6 @@ export default {
     },
     activated(){
         if(!(sessionStorage.getItem('partita'))) return;
-        
         this.intervalId = setInterval(() => {
             console.log("partita.id: ", this.partita.id);
             
@@ -242,143 +245,51 @@ export default {
 </script>
 
 <style scoped>
-/*  .grid-container {
+#board{
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    
+}
+
+#cells{
+    padding: 30px;
+}
+
+.grid-container {
   display: inline-grid;
   grid-template-columns: auto auto auto;
   padding: 10px;
-}  */
-/* #board{
-    
-margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-} */
-#game-view{
-    /* Questo e' il "quadrato" in cui e' contenuto l'intero gioco*/
-    width: 400px;
-    margin-top: 200px;
-    /* margin-left: 200px;
-    margin-right: 100px;  */
-    border: 1px solid #000;
-    /* margin-left: 650px; */
+  text-align: center;
+  padding: 60px;
+
+  justify-content: space-evenly;
+    /* align-content: center; */
 }
 
 #game-view-info{
     /*Questa e' la striscia superiore in cui viene descritto lo status del gioco (tocca a X, tocca a O, ha vinto X, etc)*/
-    padding: 15px;
+    padding: 10px;
     font-family: 'Permanent Marker', cursive;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
     text-align: center;
+    
     background-color: #eee;
     
     
 }
-
-.game-view-squares{
-    /*Il contenitore dei vari Squares*/
-    height: 480px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 25px;
-    box-sizing: border-box;
-
-}
-
-
-#playerPic{
-    
-    width: 100px;
-}
-#playerX, #playerO{
-    
-    margin-top: 200px;
-    
-}
-
-#namePlayer{
-    width: 100px;
-    font-family: 'Permanent Marker', cursive;
-    font-size: 50px;
-    font-weight: bold;
-}
-
-@media only screen and (max-width: 768px){
-#playerPic{
-    width: 50px;
-}
-#namePlayer{
-    width: 100px;
-    font-size: 30px;
-}
-
-#game-view{
-    height: 600px;
-    
-    margin-top: 100px; 
-
-}
-
 #player{
-    
-    top: 200px;
+    text-align: center;
     
 }
-/*
-#game-view-info{
-    padding: 15px;
-    margin-left: 50px;
-    font-size: 25x;    
-}
-
-.game-view-squares{
-   height: 480px;
-    width: 400px;
-    padding: 25px;
-
-}*/
-} 
-
-@media only screen and (max-width: 600px) {
 #playerPic{
-    width: 50px;
+    width: 60px;
+    
 }
 #namePlayer{
-    width: 100px;
-    font-size: 30px;
-}
-
-#game-view{
-    height: 500px;
-    bottom: 250px;
-    margin-top: 0px; 
-    margin-left: 40px;
-
-}
-.game-view-squares{
-   height: 400px;
-    width: 350px;
     
-    padding: 20px;
-
-}
-
-#playerX{
+    font-family: 'Permanent Marker', cursive;
+    font-size: 40px;
+    font-weight: bold;
     
-    top: 450px;
-    margin-left: 30px;
-    
-}
-#playerO{
-    
-    bottom: 410px;
-    margin-left: 230px;
-    
-}
-#chat-msg{
-    bottom: 400px;
-    
-}
 }
 </style>

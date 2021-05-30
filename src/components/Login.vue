@@ -41,7 +41,8 @@
             <button :disabled="btnDisabled"   @click = "handleLogin" type = "submit" form = "myform" class="btn ">
               <font-awesome-icon :icon="['fas', 'arrow-right']" />
             </button>
-            <a href="#" @click = "handleRegistrazione">Crea un Account</a> 
+            <a href="#" @click = "handleRegistrazione">Crea un Account</a>
+            
             
         </div>
         <h4> {{message}} </h4>
