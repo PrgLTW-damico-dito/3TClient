@@ -4,7 +4,7 @@
     <br>
     <div id="info" class="text-center">
       <h1>This application has been created to allow everyone to play their TicTacToe games with friends.
-        <br>What could be better than Arena? Have fun, have TicTacToe!</h1>
+        <br>What could be better than Arena? <br>Have fun, have TicTacToe!</h1>
     </div>
 
     <hr>
