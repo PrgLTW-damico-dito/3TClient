@@ -55,11 +55,9 @@ export default({
           }
           else if (error.request) {
               console.log(error.request);
-              this.message = error.request;
               EventBus.$emit('unlogged');
           } else {
               console.log('Error', error.message);
-              this.message = error.message;
               EventBus.$emit('unlogged');
           }
           this.spinner = false;
