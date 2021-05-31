@@ -50,15 +50,17 @@ export default({
             console.log(error.response.data);
             console.log(error.response.status);
             console.log(error.response.headers);
-            this.message = error.response.data.message;
+            EventBus.$emit('unlogged');
             
           }
           else if (error.request) {
               console.log(error.request);
               this.message = error.request;
+              EventBus.$emit('unlogged');
           } else {
               console.log('Error', error.message);
               this.message = error.message;
+              EventBus.$emit('unlogged');
           }
           this.spinner = false;
         })

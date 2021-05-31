@@ -54,6 +54,7 @@ export default {
         message: undefined,
       }
     },
+
     mounted(){
       this.$watch(()=>{
         if(this.password)

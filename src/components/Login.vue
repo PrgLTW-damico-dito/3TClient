@@ -7,12 +7,12 @@
       <h1>Login</h1>
         
         <div class ="textb">
-            <input type="text" id = "username" v-model="username" required>
+            <input type="text" id = "username" v-model="username" >
             <div class="placeholder" >Username</div>
         </div>
 
         <div v-if="pswVisible" class ="textb" >
-            <input type="password" v-model="password"  id = "password" required>
+            <input type="password" v-model="password"  id = "password" >
             <div class="placeholder">Password</div>
             <div @click = "pswVisible = false">
               <font-awesome-icon :icon="['fas', 'eye-slash']" class="show-password"/>  

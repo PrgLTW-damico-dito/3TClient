@@ -6,7 +6,7 @@
       <h1>Registrazione</h1>
         
         <div class ="textb">
-            <input type="text" id = "username" v-model="username" required>
+            <input type="text" id = "username" v-model="username" required autofocus>
             <div class="placeholder" >Username</div>
         </div>
 

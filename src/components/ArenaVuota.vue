@@ -4,6 +4,7 @@
       <h1>ATTENZIONE: <br>la tua arena è vuota, devi sfidare qualcuno per iniziare a giocare.</h1>
       
     </div>
+    
   </div>
 </template>
 
@@ -14,3 +15,4 @@
     margin-top:200px;
 }
 </style>
+ 
