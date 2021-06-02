@@ -7,7 +7,7 @@
 
 ## Specifiche
 
-Si vuole realizzare un'applicazione che consenta a due o più utenti di giocare al gioco del tic tac toe (tris). Di ogni utente è necessario conoscere l'username, la sua password ed eventualmente un'immagine.
+Si vuole realizzare un'applicazione che consenta a due o più utenti di giocare al gioco del tic tac toe (tris). Di ogni utente è necessario conoscere l'username, la sua password.
 
 L'utente una volta registrato può giocare una partita selezionando uno degli utenti online, i quali possono essere: *online*, *offline* oppure *in partita*, solo ai giocatori online è possibile inviare una proposta di sfida.
 
@@ -24,7 +24,6 @@ Del giocatore interessa sapere il numero di partite: *perse*, *vinte* e *pareggi
 
 Una volta terminata la partita l'utente può:
 
- * scegliere se giocare una nuova partita con l'avversario appena sfidato, il quale potrà accettare o meno.
  * tornare nella schemata precedente e scegliere un nuovo avversario
  * fare logout e uscire dall'applicazione
 
@@ -38,29 +37,30 @@ Ha due campi compilabili (*username* e *password*) e due bottoni da poter clicca
 
 ### 2-Schermata di registrazione
 Vi si accede cliccando su sign-in nella schermata di login
-Ha 4 campi compilabili (Nome, Cognome, Email e Profile picture).
-Ha 3 bottoni cliccabili (Sfoglia, Annulla e registrati). Sfoglia permette di cercare fra i file del proprio pc l’immagine di profilo. Annulla riporta alla schermata di login. Registrati porta alla schermata di scelta dello sfidante.
+Ha 2 campi compilabili (username e password).
+Registrati porta alla schermata di login.
 
 ![Schermata registrazione](img/Picture2.png)
-### 3-Schermata di scelta dello sfidante
-Vi si accede cliccando login dalla schermata di login, oppure registrati dalla schermata di registrazione, oppure nuovo sfidante dalla schermata di gioco.
-Ha 3 pulsanti cliccabili, quello di profilo, che porta alla schermata di profilo e quello di logout, che porta alla schermata di login. L’ultimo pulsante è quello di sfida, situato accanto ad ogni giocatore online, e porta alla schermata di gioco (una volta cliccato fará comparire un popup con scritto “Giocatore x ti ha proposto una sfida!”, con pulsanti accetta e rifiuta nella schermata dell’avversario. Fará invece comparire “Sfida proposta” al posto del pulsante sfida nella schermata del giocatore).
 
-Il resto della schermata è volto a indicare ogni giocatore online. Di ogni giocatore viene fatto vedere l’username e lo status (Online, In partita e offline) (preferibilmente seguendo quest’ordine, di modo da avere tutti i giocatori sfidabili ad inizio pagina).
+### 3-Schermata di scelta dello sfidante
+Vi è una tabella contenente tutti i giocatori registrati. In particolare un giocatore può giocare con un altro utente a patto che questo sia online e non offline o in partita.
+Il pulsante di sfida porta alla schermata di gioco (una volta cliccato fará comparire un popup con scritto “Giocatore x ti ha proposto una sfida!”. Fará invece comparire “Sfidato da...” al posto del pulsante sfida nella schermata del giocatore).
+La tabella può essere ordinata a seconda che si premano i pulsanti Stato, Giocatore, Vinte, Perse, Patte
 
 ![Schermata di scelta dello sfidante](img/Picture3.png)
 
 ### 4-Schermata di gioco
 Vi si accede cliccando il pulsante sfida da Schermata di scelta dello sfidante.
-A partita terminata compare un popup che dice “Hai vinto!”.
+A partita terminata compare un popup con scritto il vincitore della partita.
 
-Dopo la partita si “abilitano” i pulsanti sfida di nuovo e nuovo sfidante. Cliccando su nuovo sfidante si torna alla schermata di scelta dello sfidante. Cliccando sfida di nuovo l’avversario riceve un popup: “L’avversario ti ha sfidato!” “Accetta” “Rifiuta”.
+Vi sono in particolare la tabella di gioco (tris) e una chat per poter scambiare dei messaggi con l'avversario
+
 
 ![Schermata di gioco](img/Picture4.png)
 
 ### 5-Schermata di profilo
 Vi si accede cliccando profilo dalla schermata di scelta dello sfidante.
-Mostra le informazioni sull’utente, permettendone la modifica mediante l’apposito pulsante.
-Quando si vuole clicca il pulsante modifica compare un popup con i 3 campi compilabili (ad esempio) “Vecchia password” “Nuova password” “Conferma nuova password”
+Mostra le informazioni sull’utente, permettendone la modifica della password.
+
 
 ![Schermata di profilo](img/Picture5.png)
