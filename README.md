@@ -33,21 +33,21 @@ Una volta terminata la partita l'utente può:
 Vi si accede non appena si entra nell'applicazione o cliccando il pulsante di logout dalla schermata di scelta dello sfidante.
 Ha due campi compilabili (*username* e *password*) e due bottoni da poter cliccare (*login* e *signin*). Cliccando su *login* si accede alla schermata di scelta dello sfidante. Cliccando su *signin* si accede alla schermata di registrazione.
 
-![Schermata Login](img/Picture1.png)
+<img src="img/Picture1.jpg" alt="Schermata Login" style="zoom:50%;" />
 
 ### 2-Schermata di registrazione
 Vi si accede cliccando su sign-in nella schermata di login
 Ha 2 campi compilabili (username e password).
 Registrati porta alla schermata di login.
 
-![Schermata registrazione](img/Picture2.png)
+<img src="img/Picture2.jpg" alt="Schermata registrazione" style="zoom: 50%;" />
 
 ### 3-Schermata di scelta dello sfidante
 Vi è una tabella contenente tutti i giocatori registrati. In particolare un giocatore può giocare con un altro utente a patto che questo sia online e non offline o in partita.
 Il pulsante di sfida porta alla schermata di gioco (una volta cliccato fará comparire un popup con scritto “Giocatore x ti ha proposto una sfida!”. Fará invece comparire “Sfidato da...” al posto del pulsante sfida nella schermata del giocatore).
 La tabella può essere ordinata a seconda che si premano i pulsanti Stato, Giocatore, Vinte, Perse, Patte
 
-![Schermata di scelta dello sfidante](img/Picture3.png)
+<img src="img/Picture3.jpg" alt="Schermata di scelta dello sfidante" style="zoom:67%;" />
 
 ### 4-Schermata di gioco
 Vi si accede cliccando il pulsante sfida da Schermata di scelta dello sfidante.
@@ -55,12 +55,10 @@ A partita terminata compare un popup con scritto il vincitore della partita.
 
 Vi sono in particolare la tabella di gioco (tris) e una chat per poter scambiare dei messaggi con l'avversario
 
-
-![Schermata di gioco](img/Picture4.png)
+<img src="img/Picture4.jpg" alt="Schermata di gioco" style="zoom: 67%;" />
 
 ### 5-Schermata di profilo
 Vi si accede cliccando profilo dalla schermata di scelta dello sfidante.
 Mostra le informazioni sull’utente, permettendone la modifica della password.
 
-
-![Schermata di profilo](img/Picture5.png)
+<img src="img/Picture5.jpg" alt="Schermata di profilo" style="zoom: 67%;" />
